@@ -38,7 +38,7 @@ namespace Homework_9.Pages {
       } else {
 
         var cardType = CardTypes.Instance.Where(i => i.Id == id).FirstOrDefault();
-       
+      
         cardType.Name = description;
         cardType.Description = description;
         cardType.IsVisitible = isvisitible;
