@@ -1,0 +1,10 @@
+﻿@model Homework_9.Pages.CardType
+<turbo-stream action="replace" target="cardtype_0">
+  <template><turbo-frame id="cardtype_0"></turbo-frame></template>
+</turbo-stream>
+
+<turbo-stream action="append" target="cardtypes">
+  <template>
+    <partial name="_TypesView.cshtml" model="@Model"></partial>
+  </template>
+</turbo-stream>

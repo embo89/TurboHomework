@@ -1,0 +1,54 @@
+﻿@page
+@model Homework_9.Pages.TypesModel
+
+
+<div class="justify-center grid grid-col-3 pl-10 text-center item-center m-12">
+   <div class="justify-center border border-gray">
+        <div class="flex  px-3 py-3 ">
+            <div class="basis-1/5 text-start">
+              <img src="~/dist/images/idesse_untitled_logo.png" class="block  h-7  sm:mx-0 sm:shrink-0 border border-white border-spacing-2 justify-end"/>   
+
+            </div>
+            <div class="basis-3/5 text-start">
+               <h1 class="text-font-bold text-gray-500 ">Kart Tipleri</h1>
+            </div>           
+            <div class="basis-1/5 text-right">
+              <a asp-page="/Types"  src="~/dist/images/save.png"  asp-page-handler="AddCardType" data-turbo-frame="cardtype_0" class="link-button-primary ml-2">
+                <img src="~/dist/images/plus.png"  class="h-5 text-right"/></a>
+             
+           
+       </div> 
+          </div>
+
+       <hr  class="w-full"/>
+         <div class="  grid-flow-col mx-2 my-2 border border-gray-200  rounded-md ">
+     
+    <div class=" mx-2 my-2  rounded-md ">     
+    <div class="grid grid-cols-3 mx-2 my-2 py-3 justify-center ">
+    <div class="text-font-bold text-gray-500 text-left ml-3 ">
+      Tanım
+    </div>
+      <div class="text-font-bold text-gray-500 text-left ">Ziyaret Edilebilir</div>
+      <div class=""></div>
+    </div>
+    </div>
+      <div class="text-font-bold text-gray-500 items-center ">
+        <turbo-frame id="cardtype_0"></turbo-frame>
+        
+        <turbo-frame id="cardtypes">
+          @foreach(var cardType in CardTypes.Instance) {
+            <partial name="_TypesView" model="@cardType"></partial>
+          }
+        </turbo-frame>       
+      </div>
+         </div>
+         </div>
+
+
+
+
+
+
+  </div>
+
+</div>
