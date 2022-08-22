@@ -1,16 +1,49 @@
 ﻿@page
-@model IndexModel
-@{
+@model Homework_9.Pages.IndexModel
+@*@{
     ViewData["Title"] = "Idesse";
-}
+}*@
 
 
 <div class="justify-center grid grid-col-3 pl-10 text-center item-center m-12">
 
   <div class="justify-center border border-gray ">
 
-    <partial name="_LoginView"></partial>  
+   @* <partial name="_LoginView"></partial>  *@
+        <div class="flex justify-center  px-3 py-5 pb-7">
+            <div class="item-center">
+              <img src="~/dist/images/logo.png" class="block  h-10  sm:mx-0 sm:shrink-0 border border-white border-spacing-2 justify-end"/>   
+            </div>
+       </div>
+       <form method="post">
+      <div class="flex justify-center px-3 py-2">
+        
+          <div class="basis-1/2 text-right">
+             <label class="text-font-semibold  text-m text-right px-2" >User Name</label>
+          </div>
+          <div class="basis-1/2 text-right" >
+            <input asp-for=@Model.UserName name="username" type="text" class="rounded rounded-sm shadow shadow-m border border-xl " placeholder="Enter User Name"/>   
+          </div>
+      </div>
+      <div class=" flex justify-center  px-3 py-2">
+          <div class="basis-1/2 text-right">
+            <label class="text-font-semibold text-m text-right px-2" >Password</label>
+          </div>
+          <div class="basis-1/2 text-right">
+            <input type="password" name="password" asp-for=@Model.Password   class="rounded rounded-sm shadow shadow-m border border-xl " placeholder="Password"/>
+          </div>
+      </div>
 
+      <div class="flex justify-center px-3 py-2" >        
+          <div class="basis-1/2 text-right pl-5" >
+          <a  asp-page="/Types" class="rounded rounded-sm font-sans text-m bg-blue-700 text-white shadow shadow-m  mx-4 border border-xl border-gray-300 px-9 py-1" >Login</a>
+           <a asp-page="/Index"  asp-page-handler="Login" class="rounded rounded-sm font-sans text-m bg-blue-700 text-white shadow shadow-m  mx-4 border border-xl border-gray-300 px-9 py-1" > Login </a> 
+          <button asp-page="/Index" asp-page-handler="Login" class="border border-black px-4 py-2" type="submit">Login</button>
+        </div>
+     </div>
+    </form>
+
+      </div>
      
 
 </div>
