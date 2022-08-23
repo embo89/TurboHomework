@@ -1,13 +1,20 @@
 ﻿@model Homework_9.Pages.CardType
 
 
+  <turbo-frame id=" cardtype_0"></turbo-frame>
 
+    <turbo-frame id="cardtypes">
+          @foreach(var cardType in CardTypes.Instance) {
+            <partial name="_TypesView" model="@cardType"></partial>
+          }
+        </turbo-frame>  
+@*
 <turbo-stream action="replace" target="cardtype_0">
   <template><turbo-frame id="cardtype_0"></turbo-frame></template>
-</turbo-stream>
+</turbo-stream>*@
 
-<turbo-stream action="append" target="cardtypes">
+@*<turbo-stream act ççion="append" target="cardtypes">
   <template>
     <partial name="_TypesView.cshtml" model="@Model"></partial>
   </template>
-</turbo-stream>
+</turbo-stream>*@
