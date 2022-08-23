@@ -15,8 +15,7 @@
             <div class="basis-1/5 text-right">
               <a asp-page="/Types"  src="~/dist/images/save.png"  asp-page-handler="AddCardType" data-turbo-frame="cardtype_0" class="link-button-primary ml-2">
                 <img src="~/dist/images/plus.png"  class="h-5 text-right"/>
-                </a>
-             
+                </a>             
            
        </div> 
           </div>
@@ -34,7 +33,9 @@
     </div>
     </div>
       <div class="text-font-bold text-gray-500 items-center ">
-        <turbo-frame id="cardtype_0"></turbo-frame>
+        <turbo-frame id="cardtype_0" src="/Types?handler=AddCardType" >
+         Yükleniyor...
+        </turbo-frame>
         
         <turbo-frame id="cardtypes">
           @foreach(var cardType in CardTypes.Instance) {

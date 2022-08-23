@@ -1,7 +1,7 @@
 ﻿@model Homework_9.Pages.CardType
 
 <turbo-frame id="cardtype_@Model.Id">
-  <form method="post">
+  <form method="post" data-turbo-frame="_top">
     <input type="hidden" asp-for="@Model.Id" hidden />
     <div class=" mx-2 my-2  rounded-md  border border-gray-500 rounded  rounded-sm px-2 py-2">     
     <div class="grid grid-cols-3 mx-2  justify-center ">

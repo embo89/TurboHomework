@@ -21,7 +21,7 @@ namespace Homework_9.Pages {
     }
 
 
-    public PartialViewResult OnPostSaveCardType(int id, string description, bool isvisitible, bool islocationrequired, bool isuseraccount) {
+    public IActionResult OnPostSaveCardType(int id, string description, bool isvisitible, bool islocationrequired, bool isuseraccount) {
       if (id == 0) {
 
         if (CardTypes.Instance.Where(i => i.Description == description).FirstOrDefault() != null || String.IsNullOrWhiteSpace(description) == true) {
@@ -32,8 +32,9 @@ namespace Homework_9.Pages {
         var cardType = new CardType { Id = CardTypes.Instance.Count + 1, Name = description, Description = description, IsLocationRequired = islocationrequired, IsUserAccount = isuseraccount, IsVisitible = isvisitible };
         CardTypes.Instance.Add(cardType);
 
-        Response.ContentType = "text/vnd.turbo-stream.html";
-        return Partial("_TypeAdd", cardType);
+        //Response.ContentType = "text/vnd.turbo-stream.html";
+        //return Partial("_TypeAdd", cardType);
+        //return RedirectToPage("Types");
 
       } else {
 
@@ -45,9 +46,13 @@ namespace Homework_9.Pages {
         cardType.IsLocationRequired = islocationrequired;
         cardType.IsUserAccount = isuseraccount;
 
-        Response.ContentType = "text/vnd.turbo-stream.html";
-        return Partial("_TypeEdit", cardType);
+        //Response.ContentType = "text/vnd.turbo-stream.html";
+        //return Partial("_TypeEdit", cardType);
+
+        //return RedirectToPage("Types");
       }
+
+      return RedirectToPage("Types");
     }
 
 
