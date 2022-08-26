@@ -13,7 +13,7 @@ namespace Homework_9.Pages {
       var cardType = new CardType { Id = 0, Description = String.Empty };
       return Partial("_TypeAddEdit", cardType);
     }
-    
+
     public PartialViewResult OnGetEditCardType(int id) {
 
       var cardType = CardTypes.Instance.Where(i => i.Id == id).FirstOrDefault();
@@ -32,22 +32,22 @@ namespace Homework_9.Pages {
         var cardType = new CardType { Id = CardTypes.Instance.Count + 1, Name = description, Description = description, IsLocationRequired = islocationrequired, IsUserAccount = isuseraccount, IsVisitible = isvisitible };
         CardTypes.Instance.Add(cardType);
 
-        //Response.ContentType = "text/vnd.turbo-stream.html";
-        //return Partial("_TypeAdd", cardType);
+        Response.ContentType = "text/vnd.turbo-stream.html";
+        return Partial("_TypeAdd", cardType);
         //return RedirectToPage("Types");
 
       } else {
 
         var cardType = CardTypes.Instance.Where(i => i.Id == id).FirstOrDefault();
-      
+
         cardType.Name = description;
         cardType.Description = description;
         cardType.IsVisitible = isvisitible;
         cardType.IsLocationRequired = islocationrequired;
         cardType.IsUserAccount = isuseraccount;
 
-        //Response.ContentType = "text/vnd.turbo-stream.html";
-        //return Partial("_TypeEdit", cardType);
+        Response.ContentType = "text/vnd.turbo-stream.html";
+        return Partial("_TypeEdit", cardType);
 
         //return RedirectToPage("Types");
       }
