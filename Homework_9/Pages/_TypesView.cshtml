@@ -11,7 +11,7 @@
         <input type="checkbox" disabled asp-for="@Model.IsVisitible"/>      
     </div>
     <div class="text-right pl-12">
-        <a asp-page="/Types" asp-page-handler="EditCardType" asp-route-id="@Model.Id" class="appearance-none  relative block w-full  text-gray-500  sm:text-sm >
+        <a asp-page="/Types" asp-page-handler="EditCardType" asp-route-id="@Model.Id" class="flex justify-end appearance-none  relative block w-full  text-gray-500  sm:text-sm >
          <?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
            <svg enable-background="new 0 0 19 19" height="18px" id="Layer_1" version="1.1" viewBox="0 0 19 19" width="18px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
            <g>
@@ -23,8 +23,8 @@
         </a>   
     </div>
 
-    <div class="text-right">
-        <a asp-page="/Types" asp-page-handler="DeleteCardType" asp-route-id="@Model.Id" class="appearance-none  relative block w-full  text-gray-500  sm:text-sm >
+    <div >
+        <a asp-page="/Types"  asp-page-handler="DeleteCardType" asp-route-id="@Model.Id" class="flex justify-end pr-4 appearance-none  relative block w-full  text-gray-500  sm:text-sm >
       <?xml version="1.0" ?>
       <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" height="18px"><defs>
         <style>.cls-1{fill:none;stroke:#827f85;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style>

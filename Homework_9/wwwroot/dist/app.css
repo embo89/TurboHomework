@@ -657,6 +657,9 @@ video {
 .basis-2\/3 {
   flex-basis: 66.666667%;
 }
+.basis-2\/5 {
+  flex-basis: 40%;
+}
 .border-spacing-2 {
   --tw-border-spacing-x: 0.5rem;
   --tw-border-spacing-y: 0.5rem;
