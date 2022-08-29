@@ -5,42 +5,35 @@
 }*@
 
 
-<div class="justify-center grid grid-col-3 pl-10 text-center item-center m-12">
 
-  <div class="justify-center border border-gray ">
-        <div class="flex justify-center  px-3 py-5 pb-7">
-            <div class="item-center">
-              <img src="~/dist/images/logo.png" class="block  h-10  sm:mx-0 sm:shrink-0 border border-white border-spacing-2 justify-end"/>   
-            </div>
-       </div>
-       <form method="post">
-      <div class="flex justify-center px-3 py-2">
-        
-          <div class="basis-1/2 text-right">
-             <label class="text-font-semibold  text-m text-right px-2" >User Name</label>
-          </div>
-          <div class="basis-1/2 text-right" >
-            <input asp-for=@Model.UserName name="username" type="text" class="rounded rounded-sm shadow shadow-m border border-xl " placeholder="Enter User Name"/>   
-          </div>
-      </div>
-      <div class=" flex justify-center  px-3 py-2">
-          <div class="basis-1/2 text-right">
-            <label class="text-font-semibold text-m text-right px-2" >Password</label>
-          </div>
-          <div class="basis-1/2 text-right">
-            <input type="password" name="password" asp-for=@Model.Password   class="rounded rounded-sm shadow shadow-m border border-xl " placeholder="Password"/>
-          </div>
-      </div>
-
-      <div class="flex justify-center px-3 py-2" >        
-          <div class="basis-1/2 text-right pl-5" >
-    <button asp-page="/Index" asp-page-handler="Login"  class="rounded rounded-sm font-sans text-m bg-blue-700 text-white shadow shadow-m  mx-4 border border-xl border-gray-300 px-9 py-1" type="submit">Login</button>
-        </div>
-     </div>
-    </form>
-
-      </div>
+    <div>
+      <img class="mx-auto h-12 w-auto"src="~/dist/images/logo.png" alt="Workflow">
      
+    </div>
+    <form class="mt-8 space-y-6"  method="POST">
+      <input type="hidden" name="remember" value="true">
+      <div class="rounded-md shadow-sm -space-y-px">
+        <div>
+          <label for="username" class="sr-only">User Name</label>
+          <input asp-for=@Model.UserName  name="username" required  class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300  placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" placeholder="User Name">
+        </div>
+        <div>
+          <label for="password" class="sr-only">Password</label>
+          <input asp-for=@Model.Password id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" placeholder="Password">
+        </div>
+      </div>    
+     <div>
+        <button asp-page="/Index" asp-page-handler="Login"  class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+          <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+            <!-- Heroicon name: mini/lock-closed -->
+            <svg class="h-5 w-5  group-hover:text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
+            </svg>
+          </span>
+          Login
+        </button>
+      </div>
+    </form>
+ 
 
-</div>
-</div>
+   

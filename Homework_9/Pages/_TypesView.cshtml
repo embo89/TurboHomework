@@ -2,19 +2,36 @@
 
 
 <turbo-frame id="cardtype_@Model.Id">
-   <div class=" mx-2 my-2  rounded-md ">     
-    <div class="grid grid-cols-3 mx-2  justify-center ">
-    <div class="text-center">
-      <p class="text-left">@Model.Description</p>    
+  <div class="grid grid-cols-4  w-full pt-2 ">
+    <div  >
+        <span class="appearance-none  relative block w-full pl-4 text-gray-500  sm:text-sm">@Model.Description</span>
+      
     </div>
-    <div>
-      <input type="checkbox" disabled asp-for="@Model.IsVisitible"/>
+    <div class="text-left pl-8">
+        <input type="checkbox" disabled asp-for="@Model.IsVisitible"/>      
     </div>
-    <div class=" flex text-center ">
-      <div>
-        <a asp-page="/Types" asp-page-handler="EditCardType"  class="link-button-primary ml-2"  asp-route-id="@Model.Id"> Edit</a>    
-      </div>
-        </div>
-  </div>
-</div>
+    <div class="text-right pl-12">
+        <a asp-page="/Types" asp-page-handler="EditCardType" asp-route-id="@Model.Id" class="appearance-none  relative block w-full  text-gray-500  sm:text-sm >
+         <?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+           <svg enable-background="new 0 0 19 19" height="18px" id="Layer_1" version="1.1" viewBox="0 0 19 19" width="18px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+           <g>
+             <path d="M8.44,7.25C8.348,7.342,8.277,7.447,8.215,7.557L8.174,7.516L8.149,7.69 C8.049,7.925,8.014,8.183,8.042,8.442l-0.399,2.796l2.797-0.399c0.259,0.028,0.517-0.007,0.752-0.107l0.174-0.024l-0.041-0.041   c0.109-0.062,0.215-0.133,0.307-0.225l5.053-5.053l-3.191-3.191L8.44,7.25z"
+             fill="#827f85"/>
+             <path d="M18.183,1.568l-0.87-0.87c-0.641-0.641-1.637-0.684-2.225-0.097l-0.797,0.797l3.191,3.191l0.797-0.798   C18.867,3.205,18.824,2.209,18.183,1.568z" fill="#827f85"/>
+          
+         </g></svg>
+        </a>   
+    </div>
+
+    <div class="text-right">
+        <a asp-page="/Types" asp-page-handler="DeleteCardType" asp-route-id="@Model.Id" class="appearance-none  relative block w-full  text-gray-500  sm:text-sm >
+      <?xml version="1.0" ?>
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" height="18px"><defs>
+        <style>.cls-1{fill:none;stroke:#827f85;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style>
+        </defs><title/><g id="trash"><rect class="cls-1" height="22" width="18" x="7" y="7"/><line class="cls-1" x1="3" x2="29" y1="7" y2="7"/>
+        <line class="cls-1" x1="13" x2="19" y1="3" y2="3"/><line class="cls-1" x1="13" x2="13" y1="12" y2="22"/>
+        <line class="cls-1" x1="19" x2="19" y1="12" y2="22"/></g></svg>
+         </a>
+            </div>
+       </div>
 </turbo-frame>

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["MainTitle"]</title>
+   <script src="~/dist/app.js" defer></script>
+  <link rel="stylesheet" href="~/dist/app.css" />
+</head>
+<body >
+
+    <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full  border border-gray  p-6">
+    <div class="flex">
+            <div class="basis-1/5 text-center">
+              <img class="mx-auto h-12 w-auto"src="~/dist/images/idesse_untitled_logo.png" alt="Workflow">
+            </div>
+            <div class="basis-4/5 text-left pl-2 pt-3">
+               <a  asp-page="/Types" class="text-font-bold text-gray-500 " >Kart Tipleri</a>         
+            </div>                  
+          </div>
+          <hr  class="w-full m-2 "/>
+        <main role="main" >
+            @RenderBody()
+        </main>
+    </div>
+    </div>
+
+   
+
+</body>
+</html>

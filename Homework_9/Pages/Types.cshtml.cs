@@ -20,6 +20,13 @@ namespace Homework_9.Pages {
       return Partial("_TypeAddEdit", cardType);
     }
 
+    public IActionResult OnGetDeleteCardType(int id) {
+
+      var cardType = CardTypes.Instance.Where((i) => i.Id == id).FirstOrDefault();
+      CardTypes.Instance.Remove(cardType);
+      return RedirectToPage("Types");
+    }
+
 
     public IActionResult OnPostSaveCardType(int id, string description, bool isvisitible, bool islocationrequired, bool isuseraccount) {
       if (id == 0) {
@@ -29,12 +36,13 @@ namespace Homework_9.Pages {
           throw new Exception("Same description");
         }
 
-        var cardType = new CardType { Id = CardTypes.Instance.Count + 1, Name = description, Description = description, IsLocationRequired = islocationrequired, IsUserAccount = isuseraccount, IsVisitible = isvisitible };
+
+        var cardType = new CardType();
+        cardType = new CardType { Id = CardTypes.Instance.Count + 1, Name = description, Description = description, IsLocationRequired = islocationrequired, IsUserAccount = isuseraccount, IsVisitible = isvisitible };
         CardTypes.Instance.Add(cardType);
 
         Response.ContentType = "text/vnd.turbo-stream.html";
         return Partial("_TypeAdd", cardType);
-        //return RedirectToPage("Types");
 
       } else {
 
@@ -81,8 +89,10 @@ namespace Homework_9.Pages {
       get {
         if (_Instance == null) {
           _Instance = new CardTypes();
-          _Instance.Add(new CardType { Id = 1, Name = "Doktor", Description = "Doktor", IsVisitible = true, IsLocationRequired = false, IsUserAccount = false });
-          _Instance.Add(new CardType { Id = 2, Name = "Eczacı", Description = "Eczacı", IsVisitible = false, IsLocationRequired = false, IsUserAccount = false });
+          for (int i = 1; i <= 20; i++) {
+            _Instance.Add(new CardType { Id = i, Name = "Doktor " + i, Description = "Doktor " + i, IsVisitible = true, IsLocationRequired = false, IsUserAccount = false });
+
+          }
 
         }
 
