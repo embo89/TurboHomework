@@ -1,4 +1,5 @@
 ﻿@page
+@using Homework_9.Hubs
 @model Homework_9.Pages.TypesModel
 @{
     ViewBag.Title = "MainTitle"; Layout = "~/Pages/Shared/_MainLayout.cshtml";
@@ -40,6 +41,7 @@
                      <partial name="_TypesView" model="@cardType"></partial>
                 }
              </turbo-frame>
+             <signalr-turbo-stream hub=@($"/{nameof(AppHub)}") method="CardTypeChanged"></signalr-turbo-stream>
            </div>
          </div>
     </div>

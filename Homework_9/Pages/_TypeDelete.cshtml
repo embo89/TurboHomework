@@ -1,0 +1,8 @@
+﻿@model Homework_9.Pages.CardType
+
+
+<turbo-stream action="remove" target=@("cardtype_" + Model.Id)>
+  <template>
+    <partial name="_TypesView.cshtml" model="@Model"></partial>
+  </template>
+</turbo-stream>

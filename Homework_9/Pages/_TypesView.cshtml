@@ -24,14 +24,16 @@
     </div>
 
     <div >
-        <a asp-page="/Types"  asp-page-handler="DeleteCardType" asp-route-id="@Model.Id" class="flex justify-end pr-4 appearance-none  relative block w-full  text-gray-500  sm:text-sm >
+      <form method="post">
+        <button asp-page="/Types"  asp-page-handler="DeleteCardType" asp-route-id="@Model.Id" class="flex justify-end pr-4 appearance-none  relative block w-full  text-gray-500  sm:text-sm >
       <?xml version="1.0" ?>
       <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" height="18px"><defs>
         <style>.cls-1{fill:none;stroke:#827f85;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style>
         </defs><title/><g id="trash"><rect class="cls-1" height="22" width="18" x="7" y="7"/><line class="cls-1" x1="3" x2="29" y1="7" y2="7"/>
         <line class="cls-1" x1="13" x2="19" y1="3" y2="3"/><line class="cls-1" x1="13" x2="13" y1="12" y2="22"/>
         <line class="cls-1" x1="19" x2="19" y1="12" y2="22"/></g></svg>
-         </a>
+         </button>
+         </form>
             </div>
        </div>
 </turbo-frame>

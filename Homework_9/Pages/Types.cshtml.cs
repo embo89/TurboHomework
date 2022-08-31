@@ -1,9 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Homework_9.Hubs;
+using Homework_9.Services;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
 
 namespace Homework_9.Pages {
   public class TypesModel : PageModel {
 
+
+    private readonly ILogger<TypesModel> _Logger;
+    private readonly IHubContext<AppHub> _Hub;
+    private readonly IRazorPartialToStringRenderer _Renderer;
+
+
+    public TypesModel(ILogger<TypesModel> logger, IHubContext<AppHub> hub, IRazorPartialToStringRenderer renderer) {
+
+      _Logger = logger;
+      _Hub = hub;
+      _Renderer = renderer;
+
+    }
 
     public void OnGet() {
     }
@@ -20,15 +36,21 @@ namespace Homework_9.Pages {
       return Partial("_TypeAddEdit", cardType);
     }
 
-    public IActionResult OnGetDeleteCardType(int id) {
+    public async Task<IActionResult> OnPostDeleteCardType(int id) {
 
       var cardType = CardTypes.Instance.Where((i) => i.Id == id).FirstOrDefault();
       CardTypes.Instance.Remove(cardType);
-      return RedirectToPage("Types");
+
+      var renderedViewStr = await _Renderer.RenderPartialToStringAsync("../Pages/_TypeDelete", cardType);
+
+      await _Hub.Clients.All.SendAsync("CardTypeChanged", renderedViewStr);
+
+      return new EmptyResult();
+
     }
 
 
-    public IActionResult OnPostSaveCardType(int id, string description, bool isvisitible, bool islocationrequired, bool isuseraccount) {
+    public async Task<IActionResult> OnPostSaveCardType(int id, string description, bool isvisitible, bool islocationrequired, bool isuseraccount) {
       if (id == 0) {
 
         if (CardTypes.Instance.Where(i => i.Description == description).FirstOrDefault() != null || String.IsNullOrWhiteSpace(description) == true) {
@@ -41,8 +63,14 @@ namespace Homework_9.Pages {
         cardType = new CardType { Id = CardTypes.Instance.Count + 1, Name = description, Description = description, IsLocationRequired = islocationrequired, IsUserAccount = isuseraccount, IsVisitible = isvisitible };
         CardTypes.Instance.Add(cardType);
 
-        Response.ContentType = "text/vnd.turbo-stream.html";
-        return Partial("_TypeAdd", cardType);
+        var renderedViewStr = await _Renderer.RenderPartialToStringAsync("../Pages/_TypeAdd", cardType);
+
+        await _Hub.Clients.All.SendAsync("CardTypeChanged", renderedViewStr);
+
+        return new EmptyResult();
+
+        //Response.ContentType = "text/vnd.turbo-stream.html";
+        //return Partial("_TypeAdd", cardType);
 
       } else {
 
@@ -54,22 +82,23 @@ namespace Homework_9.Pages {
         cardType.IsLocationRequired = islocationrequired;
         cardType.IsUserAccount = isuseraccount;
 
-        Response.ContentType = "text/vnd.turbo-stream.html";
-        return Partial("_TypeEdit", cardType);
+        var renderedViewStr = await _Renderer.RenderPartialToStringAsync("../Pages/_TypeEdit", cardType);
 
-        //return RedirectToPage("Types");
+        await _Hub.Clients.All.SendAsync("CardTypeChanged", renderedViewStr);
+
+        return new EmptyResult();
+
+        //Response.ContentType = "text/vnd.turbo-stream.html";
+        //return Partial("_TypeEdit", cardType);
+
       }
 
-      return RedirectToPage("Types");
     }
 
 
     public PartialViewResult OnPostDeleteCancel(int id) {
 
-
-
       return Partial("Types");
-
     }
   }
 
