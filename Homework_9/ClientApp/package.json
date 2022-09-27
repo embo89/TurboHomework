@@ -32,7 +32,7 @@
   "dependencies": {
     "@hotwired/turbo": "^7.1.0",
     "@microsoft/signalr": "^6.0.8",
-    "stimulus": "^3.0.1"
+    "stimulus": "^3.1.0"
   },
   "main": "postcss.config.js",
   "description": ""

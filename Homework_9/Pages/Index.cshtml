@@ -12,10 +12,10 @@
     </div>
     <form class="mt-8 space-y-6"  method="POST">
       <input type="hidden" name="remember" value="true">
-      <div class="rounded-md shadow-sm -space-y-px">
-        <div>
+      <div  data-controller="login" class="rounded-md shadow-sm -space-y-px">
+        <div data-login-username-class="bg-yellow-300" >
           <label for="username" class="sr-only">User Name</label>
-          <input asp-for=@Model.UserName  name="username" required  class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300  placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" placeholder="User Name">
+          <input data-login-target="username" asp-for=@Model.UserName   name="username" required  class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300  placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" placeholder="User Name">
         </div>
         <div>
           <label for="password" class="sr-only">Password</label>
